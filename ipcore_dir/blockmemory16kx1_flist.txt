@@ -1,4 +1,5 @@
 # Output products list for <blockmemory16kx1>
+_xmsgs/pn_parser.xmsgs
 blk_mem_gen_ds512.pdf
 blk_mem_gen_v6_3_readme.txt
 blockmemory16kx1/example_design/blockmemory16kx1_top.ucf
@@ -34,6 +35,7 @@ blockmemory16kx1/simulation/timing/wave_mti.do
 blockmemory16kx1/simulation/timing/wave_ncsim.sv
 blockmemory16kx1.asy
 blockmemory16kx1.gise
+blockmemory16kx1.mif
 blockmemory16kx1.ngc
 blockmemory16kx1.sym
 blockmemory16kx1.v
