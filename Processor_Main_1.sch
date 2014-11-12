@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <drawing version="7">
-    <attr value="artix7" name="DeviceFamilyName">
+    <attr value="spartan3e" name="DeviceFamilyName">
         <trait delete="all:0" />
         <trait editname="all:0" />
         <trait edittrait="all:0" />
     </attr>
     <netlist>
         <signal name="Clock" />
-        <signal name="XLXN_26(15:0)" />
-        <signal name="XLXN_39" />
-        <signal name="XLXN_40(2:0)" />
-        <signal name="XLXN_55(15:0)" />
-        <signal name="XLXN_89(15:0)" />
-        <signal name="XLXN_123(15:0)" />
-        <signal name="XLXN_157(15:0)" />
-        <signal name="XLXN_191(15:0)" />
-        <signal name="XLXN_225(15:0)" />
         <signal name="ALUOP(2:0)" />
         <signal name="PC(15:0)" />
         <signal name="Ain(15:0)" />
@@ -24,7 +15,6 @@
         <signal name="C(15:0)" />
         <signal name="ExType(15:0)" />
         <signal name="Shifter(15:0)" />
-        <signal name="XLXN_259(15:0)" />
         <signal name="AWrite" />
         <signal name="ALUAInput(2:0)" />
         <signal name="ALUBInput(1:0)" />
@@ -40,7 +30,7 @@
         <signal name="ALUControl(1:0)" />
         <signal name="XLXN_43(2:0)" />
         <signal name="XLXN_44(2:0)" />
-        <signal name="ALUControl(3:0)" />
+        <signal name="ALUOpcode(3:0)" />
         <signal name="IR3_0(3:0)" />
         <signal name="IR7_0(7:0)" />
         <signal name="ShifterInput(1:0)" />
@@ -62,16 +52,17 @@
         <port polarity="Output" name="ALUOutReg(15:0)" />
         <port polarity="Output" name="Zero" />
         <port polarity="Output" name="OverFlow" />
+        <port polarity="Output" name="Aout(15:0)" />
         <port polarity="Output" name="Bout(15:0)" />
         <port polarity="Input" name="ALUControl(1:0)" />
-        <port polarity="Input" name="ALUControl(3:0)" />
+        <port polarity="Input" name="ALUOpcode(3:0)" />
         <port polarity="Input" name="IR3_0(3:0)" />
         <port polarity="Input" name="IR7_0(7:0)" />
         <port polarity="Input" name="ShifterInput(1:0)" />
         <port polarity="Input" name="ShiftAmount(1:0)" />
         <port polarity="Input" name="ShiftLeft" />
         <blockdef name="A_B_and_ALU">
-            <timestamp>2014-11-12T5:9:15</timestamp>
+            <timestamp>2014-11-12T19:37:34</timestamp>
             <rect width="64" x="416" y="20" height="24" />
             <line x2="480" y1="32" y2="32" x1="416" />
             <rect width="64" x="416" y="84" height="24" />
@@ -125,7 +116,7 @@
             <line x2="384" y1="-288" y2="-288" x1="320" />
         </blockdef>
         <blockdef name="Extend_Shift_Unit">
-            <timestamp>2014-11-12T5:1:25</timestamp>
+            <timestamp>2014-11-12T18:50:39</timestamp>
             <rect width="256" x="64" y="-448" height="448" />
             <rect width="64" x="0" y="-428" height="24" />
             <line x2="0" y1="-416" y2="-416" x1="64" />
@@ -203,7 +194,7 @@
             <blockpin signalname="ALUOP(2:0)" name="O(2:0)" />
         </block>
         <block symbolname="ALUOpControl" name="XLXI_7">
-            <blockpin signalname="ALUControl(3:0)" name="opcode(3:0)" />
+            <blockpin signalname="ALUOpcode(3:0)" name="opcode(3:0)" />
             <blockpin signalname="XLXN_44(2:0)" name="aluop(2:0)" />
         </block>
         <block symbolname="Extend_Shift_Unit" name="XLXI_4">
@@ -289,7 +280,6 @@
             <wire x2="3216" y1="1472" y2="1472" x1="3168" />
         </branch>
         <branch name="Aout(15:0)">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3216" y="1552" type="branch" />
             <wire x2="3216" y1="1552" y2="1552" x1="3168" />
         </branch>
         <branch name="Bout(15:0)">
@@ -316,8 +306,9 @@
             <wire x2="2752" y1="144" y2="160" x1="2752" />
             <wire x2="2768" y1="160" y2="160" x1="2752" />
         </branch>
-        <branch name="ALUControl(3:0)">
-            <wire x2="2224" y1="144" y2="144" x1="2192" />
+        <branch name="ALUOpcode(3:0)">
+            <wire x2="2208" y1="144" y2="144" x1="2192" />
+            <wire x2="2224" y1="144" y2="144" x1="2208" />
         </branch>
         <instance x="2768" y="448" name="XLXI_2" orien="R0">
         </instance>
@@ -339,8 +330,6 @@
         <iomarker fontsize="28" x="3216" y="1200" name="Zero" orien="R0" />
         <iomarker fontsize="28" x="3216" y="1472" name="OverFlow" orien="R0" />
         <iomarker fontsize="28" x="3216" y="1616" name="Bout(15:0)" orien="R0" />
-        <iomarker fontsize="28" x="2736" y="416" name="ALUControl(1:0)" orien="R180" />
-        <iomarker fontsize="28" x="2192" y="144" name="ALUControl(3:0)" orien="R180" />
         <branch name="IR7_0(7:0)">
             <wire x2="2560" y1="2016" y2="2016" x1="2544" />
             <wire x2="2592" y1="2016" y2="2016" x1="2560" />
@@ -378,5 +367,8 @@
         </branch>
         <instance x="2592" y="2368" name="XLXI_4" orien="R0">
         </instance>
+        <iomarker fontsize="28" x="2736" y="416" name="ALUControl(1:0)" orien="R180" />
+        <iomarker fontsize="28" x="2192" y="144" name="ALUOpcode(3:0)" orien="R180" />
+        <iomarker fontsize="28" x="3216" y="1552" name="Aout(15:0)" orien="R0" />
     </sheet>
 </drawing>

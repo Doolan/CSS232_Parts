@@ -32,10 +32,6 @@
         <signal name="XLXN_80(15:0)" />
         <signal name="ARegOut(15:0)" />
         <signal name="BRegOut(15:0)" />
-        <signal name="XLXN_85" />
-        <signal name="XLXN_86" />
-        <signal name="XLXN_89" />
-        <signal name="XLXN_90" />
         <port polarity="Input" name="PC(15:0)" />
         <port polarity="Input" name="A(15:0)" />
         <port polarity="Input" name="B(15:0)" />

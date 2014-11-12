@@ -21,6 +21,6 @@
 module sign_extend4_16(in_bit_string,out_bit_string);
 	input [3:0] in_bit_string;
 	output [15:0] out_bit_string;
-	assign out_bit_string[15:8]= {8{in_bit_string[7]}};
-	assign out_bit_string[7:0]=in_bit_string;
+	assign out_bit_string[15:4]= {12{in_bit_string[3]}};
+	assign out_bit_string[3:0]=in_bit_string;
 endmodule
