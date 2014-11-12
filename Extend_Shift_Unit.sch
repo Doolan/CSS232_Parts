@@ -48,7 +48,7 @@
             <line x2="512" y1="-32" y2="-32" x1="448" />
         </blockdef>
         <blockdef name="mux16b4">
-            <timestamp>2014-11-10T0:31:36</timestamp>
+            <timestamp>2014-11-11T21:9:58</timestamp>
             <rect width="256" x="64" y="-320" height="320" />
             <rect width="64" x="0" y="-300" height="24" />
             <line x2="0" y1="-288" y2="-288" x1="64" />
@@ -134,12 +134,12 @@
             <blockpin signalname="XLXN_53(3:0)" name="O" />
         </block>
         <block symbolname="mux4b4" name="XLXI_25">
-            <blockpin signalname="ShiftAmount(1:0)" name="S(1:0)" />
-            <blockpin signalname="XLXN_45(3:0)" name="O(3:0)" />
-            <blockpin signalname="IR3_0(3:0)" name="B(3:0)" />
             <blockpin signalname="XLXN_53(3:0)" name="A(3:0)" />
+            <blockpin signalname="IR3_0(3:0)" name="B(3:0)" />
             <blockpin signalname="XLXN_54(3:0)" name="C(3:0)" />
             <blockpin signalname="XLXN_55(3:0)" name="D(3:0)" />
+            <blockpin name="S(3:0)" />
+            <blockpin signalname="XLXN_45(3:0)" name="O(3:0)" />
         </block>
         <block symbolname="constant" name="XLXI_22">
             <attr value="0" name="CValue">

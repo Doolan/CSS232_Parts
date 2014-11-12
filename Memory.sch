@@ -49,9 +49,7 @@
         <signal name="XLXN_99(15:0)" />
         <signal name="Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z" />
         <signal name="O" />
-        <signal name="XLXN_128" />
         <signal name="XLXN_129" />
-        <signal name="XLXN_130" />
         <signal name="Output(15:0)" />
         <signal name="OldInput(0)" />
         <signal name="Input(0)" />
@@ -118,8 +116,7 @@
         <signal name="XLXN_124" />
         <signal name="XLXN_126" />
         <signal name="XLXN_125" />
-        <signal name="RWIO">
-        </signal>
+        <signal name="RWIO" />
         <signal name="XLXN_223" />
         <signal name="Addr(8)" />
         <signal name="IOMux(1:0)" />
@@ -135,12 +132,10 @@
         <signal name="InputRst" />
         <signal name="XLXN_287" />
         <signal name="XLXN_289" />
-        <signal name="XLXN_290" />
         <signal name="XLXN_226" />
         <signal name="IOMux(0)" />
         <signal name="IOMux(1)" />
         <signal name="XLXN_262" />
-        <signal name="XLXN_321" />
         <signal name="XLXN_322" />
         <signal name="XLXN_323" />
         <port polarity="Input" name="Addr(15:0)" />
@@ -155,8 +150,8 @@
         <port polarity="Output" name="InputRecv" />
         <port polarity="Input" name="InputRst" />
         <blockdef name="blockmemory16kx1">
-            <timestamp>2014-11-6T3:11:23</timestamp>
-            <rect width="512" x="32" y="32" height="292" />
+            <timestamp>2014-11-12T0:47:31</timestamp>
+            <rect width="512" x="32" y="32" height="284" />
             <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
             <line x2="32" y1="112" y2="112" style="linewidth:W" x1="0" />
             <line x2="32" y1="208" y2="208" style="linewidth:W" x1="0" />
@@ -370,7 +365,7 @@
             <arc ex="192" ey="-160" sx="112" sy="-112" r="88" cx="116" cy="-200" />
         </blockdef>
         <blockdef name="mux16b4">
-            <timestamp>2014-11-9T23:46:48</timestamp>
+            <timestamp>2014-11-11T21:9:58</timestamp>
             <rect width="256" x="64" y="-320" height="320" />
             <rect width="64" x="0" y="-300" height="24" />
             <line x2="0" y1="-288" y2="-288" x1="64" />
