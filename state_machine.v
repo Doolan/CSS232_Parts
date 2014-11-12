@@ -51,7 +51,8 @@ module state_machine(ReadAddr,
 					AccInv,
 					InputRecv,
 					Misalign,
-					InputRst);
+					InputRst,
+					cur_op);
 
 	//inputs
 	input [3:0] op;
@@ -90,6 +91,7 @@ module state_machine(ReadAddr,
 	output KernelMode;
 	output [1:0] ExType;
 	output InputRst;
+	output [3:0] cur_op;
 
 	//register storage
 	reg ReadAddr;
@@ -118,6 +120,7 @@ module state_machine(ReadAddr,
 	reg KernelMode;
 	reg [1:0] ExType;
 	reg InputRst;
+	reg [3:0] cur_op;
 
 	//states
 	reg [4:0] current_state;
@@ -373,6 +376,7 @@ module state_machine(ReadAddr,
 					RegRead=0;
 					ALUA=3;
 					ALUB=2;
+					ALUControl=1;
 					ShifterInput=1;
 					ShifterControl=0;
 					ShifterLeft=1;
@@ -411,6 +415,7 @@ module state_machine(ReadAddr,
 					ShifterLeft=1;
 					ALUA=2;
 					ALUB=2;
+					ALUControl=1;
 					ALUOutWrite=1;
 					MemToReg=0;
 					PCWrite=0;
@@ -427,6 +432,7 @@ module state_machine(ReadAddr,
 					ShifterLeft=1;
 					ALUA=4;
 					ALUB=2;
+					ALUControl=1;
 					ALUOutWrite=1;
 					MemToReg=0;
 					PCWrite=0;
@@ -537,6 +543,7 @@ module state_machine(ReadAddr,
 				Decode:
 					begin
 						$display("The opcode is %d", op);
+						cur_op = op;
 						case (op)
 							0:
 								begin
