@@ -9,7 +9,6 @@
         <signal name="PC(15:0)" />
         <signal name="A(15:0)" />
         <signal name="B(15:0)" />
-        <signal name="Read1(15:0)" />
         <signal name="C(15:0)" />
         <signal name="ExType(15:0)" />
         <signal name="Shifter(15:0)" />
@@ -35,7 +34,6 @@
         <port polarity="Input" name="PC(15:0)" />
         <port polarity="Input" name="A(15:0)" />
         <port polarity="Input" name="B(15:0)" />
-        <port polarity="Input" name="Read1(15:0)" />
         <port polarity="Input" name="C(15:0)" />
         <port polarity="Input" name="ExType(15:0)" />
         <port polarity="Input" name="Shifter(15:0)" />
@@ -125,7 +123,7 @@
             <blockpin signalname="PC(15:0)" name="A(15:0)" />
             <blockpin signalname="ARegOut(15:0)" name="B(15:0)" />
             <blockpin signalname="XLXN_73(15:0)" name="C(15:0)" />
-            <blockpin signalname="Read1(15:0)" name="D(15:0)" />
+            <blockpin signalname="A(15:0)" name="D(15:0)" />
             <blockpin signalname="C(15:0)" name="E(15:0)" />
             <blockpin signalname="XLXN_76(15:0)" name="F(15:0)" />
             <blockpin signalname="ExType(15:0)" name="G(15:0)" />
@@ -219,9 +217,6 @@
         <branch name="B(15:0)">
             <wire x2="288" y1="176" y2="176" x1="224" />
         </branch>
-        <branch name="Read1(15:0)">
-            <wire x2="288" y1="240" y2="240" x1="224" />
-        </branch>
         <branch name="C(15:0)">
             <wire x2="288" y1="288" y2="288" x1="224" />
         </branch>
@@ -257,7 +252,6 @@
         <iomarker fontsize="28" x="224" y="48" name="PC(15:0)" orien="R180" />
         <iomarker fontsize="28" x="224" y="112" name="A(15:0)" orien="R180" />
         <iomarker fontsize="28" x="224" y="176" name="B(15:0)" orien="R180" />
-        <iomarker fontsize="28" x="224" y="240" name="Read1(15:0)" orien="R180" />
         <iomarker fontsize="28" x="224" y="288" name="C(15:0)" orien="R180" />
         <iomarker fontsize="28" x="256" y="336" name="ExType(15:0)" orien="R180" />
         <iomarker fontsize="28" x="256" y="400" name="Shifter(15:0)" orien="R180" />
@@ -307,7 +301,7 @@
             <wire x2="1568" y1="560" y2="576" x1="1568" />
             <wire x2="1616" y1="576" y2="576" x1="1568" />
         </branch>
-        <branch name="Read1(15:0)">
+        <branch name="A(15:0)">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="640" type="branch" />
             <wire x2="1616" y1="640" y2="640" x1="1568" />
         </branch>
