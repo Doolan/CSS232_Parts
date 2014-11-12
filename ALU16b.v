@@ -34,8 +34,8 @@ module ALU16b(a,b,op,r,zero,ovfl);
 		(op==3'b011)?(a+b):0 |
 		(op==3'b100)?(a-b):0 |
 		(op==3'b101)?(a<b):0;
-	assign ovfl=((op==3'b011)&((r<a)|(r<b)))|
-		((op==3'b100)&(r>a));
+	assign ovfl=((op==3'b011)&((r>=0)^(a>=0))&((r>=0)^(b>=0)))|
+		((op==3'b100)&((r>=0)^(a>=0))&((r>=0)^(b<0)));
 	assign zero=(r==0);
 
 
