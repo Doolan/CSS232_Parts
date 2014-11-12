@@ -20,7 +20,10 @@ instructions=['add',
 	'j',
 	'jal',
 	'beq',
-	'ret']
+	'ret',
+	'mv',
+	'push',
+	'pop']
 op_codes={'add':'0011',
 	'and':'0000',
 	'ber':'0110',
@@ -92,7 +95,7 @@ def main(argv):
 		print("pass in assembly file")
 		sys.exit(1)
 	if outputf=='':
-		outputf=open('output.ass','w')
+		outputf=open('output.coe','w')
 	for l in inputf:
 		outputf.write(parse(l)+'\n')
 	inputf.close()
@@ -112,6 +115,12 @@ def parse(l):
                         	return parseJAL(parts)
                 	elif i is "beq":
                         	return parseBEQ(parts)
+			elif i is "mv":
+				return parseMV(parts)
+			elif i is "push":
+				return parsePUSH(parts)
+			elif i is "pop":
+				return parsePOP(parts) 
 			elif i is 'ret':
 				# spc ra,0
 				return '1111010000000000'
@@ -131,8 +140,7 @@ def parse(l):
 
 def parseBIG_LC(parts):
 	s='1100'+parts[1]+parts[2][:8]+'\n'
-	s+='1010'+registers[parts[1]]*2+'0111'+'\n'     #sll {Destination Reg}, {Destination Reg}, 7
-	s+='1010'+registers[parts[1]]*2+'0001'+'\n'     #sll {destination Reg}, {Destination Reg}, 1
+	s+='1010'+registers[parts[1]]*2+'1000'+'\n'     #sll {Destination Reg}, {Destination Reg}, 8
 	s+='11000101'+parts[2][8:]+'\n'		        #lc at, {constant} # load the lower 8 bits
 	return s+'0001'+registers[parts[1]]*2++'0101'	#or {Destination Reg}. {Destination Reg}, at
 def parseJ(parts):
@@ -144,6 +152,14 @@ def parseJAL(parts):
 def parseBEQ(parts):
 	s=parseBIG_LC(['lc','at',parts[3]])+'\n'
 	return s+'0110'+registers[parts[1]]+registers[parts[2]]+'0101'
+def parseMV(parts):
+	s='1100010100000000'+'\n'
+	return s+'0011'+registers[parts[1]]+'0101'+registers[parts[2]]+'\n'
+def parsePUSH(parts):
+	s='1101000011111110'+'\n'+'1001'+registers[parts[1]]+'00000000'
+def parsePOP(parts):
+	s="1000"+registers[parts[1]]+'0000'+'\n'
+	return s+'1101000000000010'+'\n'
 def is_number(s):
 	try:
 		int(s)

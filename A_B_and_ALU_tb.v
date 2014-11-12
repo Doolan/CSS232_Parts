@@ -8,7 +8,6 @@ module A_B_and_ALU_A_B_and_ALU_sch_tb();
    reg [15:0] PC;
    reg [15:0] A;
    reg [15:0] B;
-   reg [15:0] Read1;
    reg [15:0] C;
    reg [15:0] ExType;
    reg [15:0] Shifter;
@@ -33,7 +32,6 @@ module A_B_and_ALU_A_B_and_ALU_sch_tb();
 		.PC(PC), 
 		.A(A), 
 		.B(B), 
-		.Read1(Read1), 
 		.C(C), 
 		.ExType(ExType), 
 		.Shifter(Shifter), 
@@ -54,7 +52,6 @@ module A_B_and_ALU_A_B_and_ALU_sch_tb();
 		PC = 16'hc0de;
 		A = 16'h1234;
 		B = 16'h5678;
-		Read1 = 16'hb00b;
 		C = 16'h2357;
 		ExType = 16'h0002;
 		Shifter = 16'h2340;
@@ -74,6 +71,10 @@ module A_B_and_ALU_A_B_and_ALU_sch_tb();
 		#20;
 		Clock = 0;
 		#20;
+		
+		AWrite = 0;
+		BWrite = 0;
+		A = 16'hb00b;
 		
 		// Now let's do some math! Muhahahaha!
 		

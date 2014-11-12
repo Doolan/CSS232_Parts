@@ -60,6 +60,11 @@ module Memory_Memory_sch_tb();
 		KernelFlag = 0;
 		InputRst = 0;
 		#202;
+		
+		Addr = 16'h3000;
+		#PERIOD;
+		$displayb(ReadData);
+		
 		// First test: simple write
 		Addr = 16'h4000;
 		WriteData = 16'h1234;
