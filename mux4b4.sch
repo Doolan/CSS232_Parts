@@ -6,6 +6,12 @@
         <trait edittrait="all:0" />
     </attr>
     <netlist>
+        <signal name="A(3:0)" />
+        <signal name="B(3:0)" />
+        <signal name="C(3:0)" />
+        <signal name="D(3:0)" />
+        <signal name="S(1:0)" />
+        <signal name="O(3:0)" />
         <signal name="V" />
         <signal name="A(0)" />
         <signal name="B(0)" />
@@ -29,16 +35,10 @@
         <signal name="C(1)" />
         <signal name="D(1)" />
         <signal name="O(1)" />
-        <signal name="D(3:0)" />
-        <signal name="C(3:0)" />
-        <signal name="A(3:0)" />
-        <signal name="B(3:0)" />
-        <signal name="S(1:0)" />
-        <signal name="O(3:0)" />
-        <port polarity="Input" name="D(3:0)" />
-        <port polarity="Input" name="C(3:0)" />
         <port polarity="Input" name="A(3:0)" />
         <port polarity="Input" name="B(3:0)" />
+        <port polarity="Input" name="C(3:0)" />
+        <port polarity="Input" name="D(3:0)" />
         <port polarity="Input" name="S(1:0)" />
         <port polarity="Output" name="O(3:0)" />
         <blockdef name="m4_1e">
