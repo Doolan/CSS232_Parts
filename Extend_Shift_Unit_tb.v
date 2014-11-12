@@ -14,7 +14,7 @@
 	reg [1:0] ShiftAmount;
 	
 	// Outputs
-	reg [15:0] O;
+	wire [15:0] O;
 
 	// Instantiate the Unit Under Test (UUT)
 	Extend_Shift_Unit uut (
@@ -31,7 +31,7 @@
       initial begin
 		IR3_0 = 4'b0001;
 		IR7_0 = 8'b10000001;
-		ShifterInput = 2'b0;
+		ShifterInput = 2'b01;
 		ShiftAmount = 2'b01;
 		ShifterLeft = 1'b0;
 		
@@ -41,8 +41,8 @@
 		#100;
 		
 		$display("Test shift IR7-0 right by IR3-0 (1)");
-		$display("Expected: 0xffc0");
-		$displayh(O);	//Expected: 0xffc0
+		$display("Expected: 0x7fc0");
+		$displayh(O);	//Expected: 0x7fc0
 		
 		
 		$display("Test shift IR7-0 left by IR3-0 (1)");
@@ -69,8 +69,8 @@
 		$display("Test shift IR7-0 left by constant 1");
 		ShiftAmount = 2'b00;
 		#20;
-		$display("Expected: 0xff00");
-		$displayh(O);	//Expected: 0xff00
+		$display("Expected: 0xff02");
+		$displayh(O);	//Expected: 0xff02
       
 		
 		$display("Test shift IR3-0 left by constant 1");
