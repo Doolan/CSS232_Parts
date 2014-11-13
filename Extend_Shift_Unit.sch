@@ -18,14 +18,8 @@
         <signal name="XLXN_55(3:0)" />
         <signal name="ShifterLeft" />
         <signal name="XLXN_66(3:0)" />
-        <signal name="XLXN_68" />
-        <signal name="XLXN_69" />
-        <signal name="XLXN_72(15:0)" />
-        <signal name="XLXN_73" />
-        <signal name="XLXN_74" />
         <signal name="XLXN_75(3:0)" />
         <signal name="XLXN_76(15:0)" />
-        <signal name="XLXN_77" />
         <signal name="XLXN_78(15:0)" />
         <port polarity="Input" name="IR3_0(3:0)" />
         <port polarity="Input" name="IR7_0(7:0)" />
@@ -52,7 +46,7 @@
             <line x2="512" y1="-32" y2="-32" x1="448" />
         </blockdef>
         <blockdef name="mux16b4">
-            <timestamp>2014-11-11T21:9:58</timestamp>
+            <timestamp>2014-11-13T0:5:19</timestamp>
             <rect width="256" x="64" y="-320" height="320" />
             <rect width="64" x="0" y="-300" height="24" />
             <line x2="0" y1="-288" y2="-288" x1="64" />
