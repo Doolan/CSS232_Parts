@@ -73,6 +73,8 @@ registers={'r0':'0000',
 	't2':'1110',
 	't3':'1111'}
 
+labels={}
+
 def main(argv):
 	try:
 		opts, args =getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
@@ -96,8 +98,16 @@ def main(argv):
 		sys.exit(1)
 	if outputf=='':
 		outputf=open('output.coe','w')
+	mem=12288
 	for l in inputf:
-		outputf.write(parse(l)+'\n')
+		if(l.strip().endswith(':')):
+			temp=len(l.strip())
+			labels[l.strip()[:(temp-1)].lower()]=mem
+		mem+=1
+	inputf.seek(0,0)	
+	for l in inputf:
+		if not (l.strip().endswith(':')):
+			outputf.write(parse(l)+'\n')
 	inputf.close()
 	outputf.close()
 
@@ -106,22 +116,23 @@ def parse(l):
 	parts=parse_line(l)
 	s=""
 	for i in parts:
-		if i in instructions:
-                	if i is "lc" and (int(parts[-1])<-128 or int(parts[-1])>127):
-                        	return parseLC(parts)
-                	elif i is "j":
+		if i in instructions: 
+                	if (i=='lc') and (int(parts[-1])<-128 or int(parts[-1])>127):
+                        	print("goes through here") 	
+				return parseBIG_LC(parts)
+                	elif i=='j':
                         	return parseJ(parts)
-                	elif i is "jal":
+                	elif i=='jal':
                         	return parseJAL(parts)
-                	elif i is "beq":
+                	elif i=='beq':
                         	return parseBEQ(parts)
-			elif i is "mv":
+			elif i=='mv':
 				return parseMV(parts)
-			elif i is "push":
+			elif i=='push':
 				return parsePUSH(parts)
-			elif i is "pop":
+			elif i=='pop':
 				return parsePOP(parts) 
-			elif i is 'ret':
+			elif i=='ret':
 				# spc ra,0
 				return '1111010000000000'
                 	else:
@@ -139,15 +150,21 @@ def parse(l):
 	return s
 
 def parseBIG_LC(parts):
-	s='1100'+parts[1]+parts[2][:8]+'\n'
+	s='1100'+registers[parts[1]]+DectoBin(parts[2],16)[8:]+'\n'
 	s+='1010'+registers[parts[1]]*2+'1000'+'\n'     #sll {Destination Reg}, {Destination Reg}, 8
-	s+='11000101'+parts[2][8:]+'\n'		        #lc at, {constant} # load the lower 8 bits
-	return s+'0001'+registers[parts[1]]*2++'0101'	#or {Destination Reg}. {Destination Reg}, at
+	s+='11000101'+DectoBin(parts[2],16)[:8]+'\n'		        #lc at, {constant} # load the lower 8 bits
+	return s+'0001'+registers[parts[1]]*2+'0101'	#or {Destination Reg}. {Destination Reg}, at
 def parseJ(parts):
-	return parseBIG_LC(['lc','at',parts[1]])+'\n'+'1111'+registers[parts[1]]+'00000000'
+	value=parts[1]
+	if parts[1] in labels:
+		value=str(labels[parts[1]])	
+	return parseBIG_LC(['lc','at',value])+'\n'+'1111010100000000'+'\n'
 def parseJAL(parts):
 	s='1110010000000110'+'\n'			#lpc ra, 6 # we want to jump 6 ahead to skip the other setup instructions
-	s+=parseBIG_LC(['lc','at',parts[1]])+'\n'	#lc at, {constant} # this is actually 5 instructions, of course
+	value=parts[1]
+	if parts[1] in labels:
+		value=str(labels[parts[1]])
+	s+=parseBIG_LC(['lc','at',value])+'\n'	#lc at, {constant} # this is actually 4 instructions, of course
 	return s+'1111010100000000'			#spc at,0
 def parseBEQ(parts):
 	s=parseBIG_LC(['lc','at',parts[3]])+'\n'
