@@ -6,33 +6,34 @@
         <trait edittrait="all:0" />
     </attr>
     <netlist>
-        <signal name="w_flag" />
+        <signal name="PCWrtie" />
         <signal name="clk" />
-        <signal name="inp(15:0)" />
-        <signal name="XLXN_4(15:0)" />
+        <signal name="PCInput(15:0)" />
+        <signal name="PC(15:0)" />
         <signal name="ALUOut(15:0)" />
         <signal name="ReadAddr" />
         <signal name="addr(15:0)" />
         <signal name="KernelFlag" />
         <signal name="InputRst" />
         <signal name="Display_Output(15:0)" />
-        <signal name="Input(15:0)" />
-        <signal name="WriteFlag" />
+        <signal name="MemInput(15:0)" />
+        <signal name="MemWrite" />
         <signal name="WriteData(15:0)" />
         <signal name="InputRecv" />
         <signal name="ReadData(15:0)" />
         <signal name="AccInv" />
-        <port polarity="Input" name="w_flag" />
+        <port polarity="Input" name="PCWrtie" />
         <port polarity="Input" name="clk" />
-        <port polarity="Input" name="inp(15:0)" />
+        <port polarity="Input" name="PCInput(15:0)" />
+        <port polarity="Output" name="PC(15:0)" />
         <port polarity="Input" name="ALUOut(15:0)" />
         <port polarity="Input" name="ReadAddr" />
         <port polarity="Output" name="addr(15:0)" />
         <port polarity="Input" name="KernelFlag" />
         <port polarity="Input" name="InputRst" />
         <port polarity="Output" name="Display_Output(15:0)" />
-        <port polarity="Input" name="Input(15:0)" />
-        <port polarity="Input" name="WriteFlag" />
+        <port polarity="Input" name="MemInput(15:0)" />
+        <port polarity="Input" name="MemWrite" />
         <port polarity="Input" name="WriteData(15:0)" />
         <port polarity="Output" name="InputRecv" />
         <port polarity="Output" name="ReadData(15:0)" />
@@ -79,13 +80,13 @@
             <line x2="384" y1="-160" y2="-160" x1="320" />
         </blockdef>
         <block symbolname="Register16b" name="XLXI_2">
-            <blockpin signalname="w_flag" name="w_flag" />
+            <blockpin signalname="PCWrtie" name="w_flag" />
             <blockpin signalname="clk" name="clk" />
-            <blockpin signalname="inp(15:0)" name="inp(15:0)" />
-            <blockpin signalname="XLXN_4(15:0)" name="outp(15:0)" />
+            <blockpin signalname="PCInput(15:0)" name="inp(15:0)" />
+            <blockpin signalname="PC(15:0)" name="outp(15:0)" />
         </block>
         <block symbolname="mux16b2" name="XLXI_3">
-            <blockpin signalname="XLXN_4(15:0)" name="A(15:0)" />
+            <blockpin signalname="PC(15:0)" name="A(15:0)" />
             <blockpin signalname="ALUOut(15:0)" name="B(15:0)" />
             <blockpin signalname="ReadAddr" name="S" />
             <blockpin signalname="addr(15:0)" name="O(15:0)" />
@@ -93,8 +94,8 @@
         <block symbolname="Memory" name="XLXI_4">
             <blockpin signalname="addr(15:0)" name="Addr(15:0)" />
             <blockpin signalname="WriteData(15:0)" name="WriteData(15:0)" />
-            <blockpin signalname="WriteFlag" name="WriteFlag" />
-            <blockpin signalname="Input(15:0)" name="Input(15:0)" />
+            <blockpin signalname="MemWrite" name="WriteFlag" />
+            <blockpin signalname="MemInput(15:0)" name="Input(15:0)" />
             <blockpin signalname="KernelFlag" name="KernelFlag" />
             <blockpin signalname="clk" name="Clk" />
             <blockpin signalname="InputRst" name="InputRst" />
@@ -108,27 +109,27 @@
         <instance x="240" y="1168" name="XLXI_2" orien="R0">
         </instance>
         <text style="fontsize:52;fontname:Arial" x="392" y="1156">PC</text>
-        <branch name="w_flag">
+        <branch name="PCWrtie">
             <wire x2="224" y1="928" y2="1072" x1="224" />
             <wire x2="240" y1="1072" y2="1072" x1="224" />
         </branch>
         <branch name="clk">
-            <wire x2="128" y1="880" y2="1200" x1="128" />
+            <wire x2="128" y1="1040" y2="1200" x1="128" />
             <wire x2="240" y1="1200" y2="1200" x1="128" />
             <wire x2="128" y1="1200" y2="1808" x1="128" />
             <wire x2="944" y1="1808" y2="1808" x1="128" />
             <wire x2="944" y1="1280" y2="1808" x1="944" />
             <wire x2="1584" y1="1280" y2="1280" x1="944" />
         </branch>
-        <branch name="inp(15:0)">
+        <branch name="PCInput(15:0)">
             <wire x2="48" y1="880" y2="1264" x1="48" />
             <wire x2="240" y1="1264" y2="1264" x1="48" />
         </branch>
-        <iomarker fontsize="28" x="224" y="928" name="w_flag" orien="R270" />
-        <iomarker fontsize="28" x="128" y="880" name="clk" orien="R270" />
-        <iomarker fontsize="28" x="48" y="880" name="inp(15:0)" orien="R270" />
-        <branch name="XLXN_4(15:0)">
+        <iomarker fontsize="28" x="224" y="928" name="PCWrtie" orien="R270" />
+        <iomarker fontsize="28" x="48" y="880" name="PCInput(15:0)" orien="R270" />
+        <branch name="PC(15:0)">
             <wire x2="640" y1="1264" y2="1264" x1="624" />
+            <wire x2="640" y1="1024" y2="1072" x1="640" />
             <wire x2="640" y1="1072" y2="1264" x1="640" />
             <wire x2="864" y1="1072" y2="1072" x1="640" />
         </branch>
@@ -152,13 +153,13 @@
             <wire x2="2240" y1="960" y2="960" x1="2224" />
         </branch>
         <iomarker fontsize="28" x="2240" y="960" name="Display_Output(15:0)" orien="R0" />
-        <branch name="Input(15:0)">
+        <branch name="MemInput(15:0)">
             <wire x2="1568" y1="1152" y2="1152" x1="1472" />
             <wire x2="1584" y1="1152" y2="1152" x1="1568" />
             <wire x2="1472" y1="1152" y2="1408" x1="1472" />
             <wire x2="1472" y1="1408" y2="1424" x1="1472" />
         </branch>
-        <branch name="WriteFlag">
+        <branch name="MemWrite">
             <wire x2="1392" y1="880" y2="896" x1="1392" />
             <wire x2="1392" y1="896" y2="1088" x1="1392" />
             <wire x2="1568" y1="1088" y2="1088" x1="1392" />
@@ -177,9 +178,9 @@
         </branch>
         <iomarker fontsize="28" x="752" y="1360" name="ALUOut(15:0)" orien="R90" />
         <iomarker fontsize="28" x="1568" y="1424" name="InputRst" orien="R90" />
-        <iomarker fontsize="28" x="1472" y="1424" name="Input(15:0)" orien="R90" />
+        <iomarker fontsize="28" x="1472" y="1424" name="MemInput(15:0)" orien="R90" />
         <iomarker fontsize="28" x="1344" y="1424" name="WriteData(15:0)" orien="R90" />
-        <iomarker fontsize="28" x="1392" y="880" name="WriteFlag" orien="R270" />
+        <iomarker fontsize="28" x="1392" y="880" name="MemWrite" orien="R270" />
         <iomarker fontsize="28" x="1440" y="864" name="KernelFlag" orien="R270" />
         <instance x="864" y="1232" name="XLXI_3" orien="R0">
         </instance>
@@ -207,5 +208,7 @@
             <wire x2="2240" y1="1088" y2="1088" x1="2224" />
         </branch>
         <iomarker fontsize="28" x="2240" y="1088" name="AccInv" orien="R0" />
+        <iomarker fontsize="28" x="128" y="1040" name="clk" orien="R270" />
+        <iomarker fontsize="28" x="640" y="1024" name="PC(15:0)" orien="R270" />
     </sheet>
 </drawing>
