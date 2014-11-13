@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <drawing version="7">
-    <attr value="artix7" name="DeviceFamilyName">
+    <attr value="spartan3e" name="DeviceFamilyName">
         <trait delete="all:0" />
         <trait editname="all:0" />
         <trait edittrait="all:0" />
@@ -10,8 +10,7 @@
         <signal name="PC(15:0)" />
         <signal name="ALUOP(2:0)" />
         <signal name="Read(15:0)" />
-        <signal name="C(15:0)">
-        </signal>
+        <signal name="C(15:0)" />
         <signal name="ExType(15:0)" />
         <signal name="Shifter(15:0)" />
         <signal name="AWrite" />
@@ -26,8 +25,7 @@
         <signal name="IR(15:12)" />
         <signal name="IR(7:0)" />
         <signal name="Aout(15:0)" />
-        <signal name="ALUOutReg(15:0)">
-        </signal>
+        <signal name="ALUOutReg(15:0)" />
         <signal name="ShifterInput(1:0)" />
         <signal name="ShiftAmount(1:0)" />
         <signal name="ShiftLeft" />
@@ -36,32 +34,23 @@
         <signal name="IR(11:8)" />
         <signal name="MemData(15:0)" />
         <signal name="IRWrite" />
-        <signal name="ALUOut(15:0)">
-        </signal>
+        <signal name="ALUOut(15:0)" />
         <signal name="Zero" />
         <signal name="OverFlow" />
         <signal name="Bout(15:0)" />
-        <signal name="RegOneRead(2:0)" />
         <signal name="RegWrite" />
-        <signal name="RegTwoRead" />
+        <signal name="ToPC(15:0)" />
+        <signal name="Read1(15:0)" />
+        <signal name="XLXN_171(15:0)" />
+        <signal name="PCSource(2:0)" />
+        <signal name="XLXN_180(15:0)" />
+        <signal name="IR(15:0)" />
+        <signal name="CWrite" />
         <signal name="MemToReg(1:0)" />
         <signal name="MemDataReg(15:0)" />
         <signal name="RegWriteCode(1:0)" />
-        <signal name="ToPC(15:0)" />
-        <signal name="Read1(15:0)">
-        </signal>
-        <signal name="XLXN_171(15:0)" />
-        <signal name="XLXN_172(15:0)" />
-        <signal name="XLXN_174(15:0)" />
-        <signal name="XLXN_175(15:0)" />
-        <signal name="PCSource(2:0)" />
-        <signal name="XLXN_177" />
-        <signal name="XLXN_178(15:0)" />
-        <signal name="XLXN_179(15:0)" />
-        <signal name="XLXN_180(15:0)" />
-        <signal name="IR(15:0)">
-        </signal>
-        <signal name="CWrite" />
+        <signal name="RegTwoRead" />
+        <signal name="RegOneRead(1:0)" />
         <port polarity="Input" name="Clock" />
         <port polarity="Input" name="PC(15:0)" />
         <port polarity="Input" name="ExType(15:0)" />
@@ -72,23 +61,25 @@
         <port polarity="Input" name="ALUOutWrite" />
         <port polarity="Input" name="ALUControl(1:0)" />
         <port polarity="Output" name="Aout(15:0)" />
+        <port polarity="Output" name="ALUOutReg(15:0)" />
         <port polarity="Input" name="ShifterInput(1:0)" />
         <port polarity="Input" name="ShiftAmount(1:0)" />
         <port polarity="Input" name="ShiftLeft" />
         <port polarity="Input" name="MemData(15:0)" />
         <port polarity="Input" name="IRWrite" />
+        <port polarity="Output" name="ALUOut(15:0)" />
         <port polarity="Output" name="Zero" />
         <port polarity="Output" name="OverFlow" />
         <port polarity="Output" name="Bout(15:0)" />
-        <port polarity="Input" name="RegOneRead(2:0)" />
         <port polarity="Input" name="RegWrite" />
-        <port polarity="Input" name="RegTwoRead" />
+        <port polarity="Input" name="PCSource(2:0)" />
         <port polarity="Input" name="MemToReg(1:0)" />
         <port polarity="Input" name="MemDataReg(15:0)" />
         <port polarity="Input" name="RegWriteCode(1:0)" />
-        <port polarity="Input" name="PCSource(2:0)" />
+        <port polarity="Input" name="RegTwoRead" />
+        <port polarity="Input" name="RegOneRead(1:0)" />
         <blockdef name="A_B_and_ALU">
-            <timestamp>2014-11-12T23:9:29</timestamp>
+            <timestamp>2014-11-12T23:20:53</timestamp>
             <rect width="352" x="64" y="-832" height="832" />
             <rect width="64" x="0" y="-812" height="24" />
             <line x2="0" y1="-800" y2="-800" x1="64" />
@@ -172,7 +163,7 @@
             <line x2="384" y1="-32" y2="-32" x1="320" />
         </blockdef>
         <blockdef name="InstReg_RegFile">
-            <timestamp>2014-11-12T22:42:18</timestamp>
+            <timestamp>2014-11-13T0:10:1</timestamp>
             <rect width="352" x="64" y="-704" height="704" />
             <rect width="64" x="0" y="-684" height="24" />
             <line x2="0" y1="-672" y2="-672" x1="64" />
@@ -180,6 +171,7 @@
             <rect width="64" x="0" y="-556" height="24" />
             <line x2="0" y1="-544" y2="-544" x1="64" />
             <line x2="0" y1="-480" y2="-480" x1="64" />
+            <rect width="64" x="0" y="-428" height="24" />
             <line x2="0" y1="-416" y2="-416" x1="64" />
             <rect width="64" x="0" y="-364" height="24" />
             <line x2="0" y1="-352" y2="-352" x1="64" />
@@ -187,10 +179,9 @@
             <line x2="0" y1="-288" y2="-288" x1="64" />
             <rect width="64" x="0" y="-236" height="24" />
             <line x2="0" y1="-224" y2="-224" x1="64" />
-            <rect width="64" x="0" y="-172" height="24" />
             <line x2="0" y1="-160" y2="-160" x1="64" />
+            <rect width="64" x="0" y="-108" height="24" />
             <line x2="0" y1="-96" y2="-96" x1="64" />
-            <rect width="64" x="0" y="-44" height="24" />
             <line x2="0" y1="-32" y2="-32" x1="64" />
             <rect width="64" x="416" y="-684" height="24" />
             <line x2="480" y1="-672" y2="-672" x1="416" />
@@ -280,15 +271,15 @@
         <block symbolname="InstReg_RegFile" name="XLXI_8">
             <blockpin signalname="MemData(15:0)" name="MemData(15:0)" />
             <blockpin signalname="IRWrite" name="IRWrite" />
-            <blockpin signalname="RegOneRead(2:0)" name="RegOneRead(2:0)" />
+            <blockpin signalname="RegOneRead(1:0)" name="RegOneRead(1:0)" />
             <blockpin signalname="RegWrite" name="RegWrite" />
-            <blockpin signalname="RegTwoRead" name="RegTwoRead" />
             <blockpin signalname="MemToReg(1:0)" name="MemToReg(1:0)" />
             <blockpin signalname="PC(15:0)" name="PC(15:0)" />
             <blockpin signalname="MemDataReg(15:0)" name="MemDataReg(15:0)" />
             <blockpin signalname="ALUOutReg(15:0)" name="ALURegOut(15:0)" />
             <blockpin signalname="Clock" name="Clock" />
             <blockpin signalname="RegWriteCode(1:0)" name="RegWriteCode(1:0)" />
+            <blockpin signalname="RegTwoRead" name="RegTwoRead" />
             <blockpin signalname="Read1(15:0)" name="read1(15:0)" />
             <blockpin signalname="Read(15:0)" name="read2(15:0)" />
             <blockpin signalname="IR(3:0)" name="IR3_0(3:0)" />
@@ -345,7 +336,7 @@
             </attr>
             <blockpin signalname="XLXN_180(15:0)" name="O" />
         </block>
-        <block symbolname="Register16b" name="C">
+        <block symbolname="Register16b" name="CReg">
             <blockpin signalname="CWrite" name="w_flag" />
             <blockpin signalname="Clock" name="clk" />
             <blockpin signalname="Read1(15:0)" name="inp(15:0)" />
@@ -471,8 +462,6 @@
         </branch>
         <instance x="4416" y="2976" name="XLXI_4" orien="R0">
         </instance>
-        <instance x="3360" y="1968" name="XLXI_8" orien="R0">
-        </instance>
         <branch name="IR(7:4)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3888" y="1680" type="branch" />
             <wire x2="3888" y1="1680" y2="1680" x1="3840" />
@@ -490,7 +479,8 @@
             <wire x2="3872" y1="1808" y2="1808" x1="3840" />
         </branch>
         <branch name="MemData(15:0)">
-            <wire x2="3360" y1="1296" y2="1296" x1="3328" />
+            <wire x2="3344" y1="1296" y2="1296" x1="3328" />
+            <wire x2="3360" y1="1296" y2="1296" x1="3344" />
         </branch>
         <branch name="IRWrite">
             <wire x2="3360" y1="1360" y2="1360" x1="3328" />
@@ -502,11 +492,9 @@
             <wire x2="4512" y1="1328" y2="1328" x1="4464" />
         </branch>
         <branch name="ALUOut(15:0)">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5056" y="1328" type="branch" />
             <wire x2="5056" y1="1328" y2="1328" x1="4992" />
         </branch>
         <branch name="ALUOutReg(15:0)">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5056" y="1472" type="branch" />
             <wire x2="5056" y1="1472" y2="1472" x1="4992" />
         </branch>
         <branch name="Zero">
@@ -521,35 +509,8 @@
         <branch name="Bout(15:0)">
             <wire x2="5040" y1="2048" y2="2048" x1="4992" />
         </branch>
-        <branch name="RegOneRead(2:0)">
-            <wire x2="3360" y1="1424" y2="1424" x1="3328" />
-        </branch>
         <branch name="RegWrite">
             <wire x2="3360" y1="1488" y2="1488" x1="3328" />
-        </branch>
-        <branch name="RegTwoRead">
-            <wire x2="3360" y1="1552" y2="1552" x1="3328" />
-        </branch>
-        <branch name="MemToReg(1:0)">
-            <wire x2="3360" y1="1616" y2="1616" x1="3328" />
-        </branch>
-        <branch name="PC(15:0)">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3328" y="1680" type="branch" />
-            <wire x2="3360" y1="1680" y2="1680" x1="3328" />
-        </branch>
-        <branch name="MemDataReg(15:0)">
-            <wire x2="3360" y1="1744" y2="1744" x1="3328" />
-        </branch>
-        <branch name="ALUOutReg(15:0)">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3328" y="1808" type="branch" />
-            <wire x2="3360" y1="1808" y2="1808" x1="3328" />
-        </branch>
-        <branch name="Clock">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3328" y="1872" type="branch" />
-            <wire x2="3360" y1="1872" y2="1872" x1="3328" />
-        </branch>
-        <branch name="RegWriteCode(1:0)">
-            <wire x2="3360" y1="1936" y2="1936" x1="3328" />
         </branch>
         <iomarker fontsize="28" x="4464" y="2032" name="ALUOutWrite" orien="R180" />
         <iomarker fontsize="28" x="4464" y="1968" name="BWrite" orien="R180" />
@@ -567,12 +528,7 @@
         <iomarker fontsize="28" x="5040" y="2048" name="Bout(15:0)" orien="R0" />
         <iomarker fontsize="28" x="3328" y="1296" name="MemData(15:0)" orien="R180" />
         <iomarker fontsize="28" x="3328" y="1360" name="IRWrite" orien="R180" />
-        <iomarker fontsize="28" x="3328" y="1424" name="RegOneRead(2:0)" orien="R180" />
         <iomarker fontsize="28" x="3328" y="1488" name="RegWrite" orien="R180" />
-        <iomarker fontsize="28" x="3328" y="1552" name="RegTwoRead" orien="R180" />
-        <iomarker fontsize="28" x="3328" y="1616" name="MemToReg(1:0)" orien="R180" />
-        <iomarker fontsize="28" x="3328" y="1936" name="RegWriteCode(1:0)" orien="R180" />
-        <iomarker fontsize="28" x="3328" y="1744" name="MemDataReg(15:0)" orien="R180" />
         <branch name="ToPC(15:0)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5264" y="96" type="branch" />
             <wire x2="5264" y1="96" y2="96" x1="5216" />
@@ -629,7 +585,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="128" y="208" type="branch" />
             <wire x2="224" y1="208" y2="208" x1="128" />
         </branch>
-        <instance x="3904" y="352" name="C" orien="R0">
+        <instance x="3904" y="352" name="CReg" orien="R0">
             <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="0" y="128" type="instance" />
         </instance>
         <branch name="C(15:0)">
@@ -648,5 +604,45 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3856" y="448" type="branch" />
             <wire x2="3904" y1="448" y2="448" x1="3856" />
         </branch>
+        <iomarker fontsize="28" x="5056" y="1328" name="ALUOut(15:0)" orien="R0" />
+        <iomarker fontsize="28" x="5056" y="1472" name="ALUOutReg(15:0)" orien="R0" />
+        <branch name="MemToReg(1:0)">
+            <wire x2="3344" y1="1552" y2="1552" x1="3328" />
+            <wire x2="3360" y1="1552" y2="1552" x1="3344" />
+        </branch>
+        <iomarker fontsize="28" x="3328" y="1552" name="MemToReg(1:0)" orien="R180" />
+        <branch name="PC(15:0)">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3328" y="1616" type="branch" />
+            <wire x2="3360" y1="1616" y2="1616" x1="3328" />
+        </branch>
+        <branch name="MemDataReg(15:0)">
+            <wire x2="3344" y1="1680" y2="1680" x1="3328" />
+            <wire x2="3360" y1="1680" y2="1680" x1="3344" />
+        </branch>
+        <iomarker fontsize="28" x="3328" y="1680" name="MemDataReg(15:0)" orien="R180" />
+        <instance x="3360" y="1968" name="XLXI_8" orien="R0">
+        </instance>
+        <branch name="RegWriteCode(1:0)">
+            <wire x2="3344" y1="1872" y2="1872" x1="3328" />
+            <wire x2="3360" y1="1872" y2="1872" x1="3344" />
+        </branch>
+        <iomarker fontsize="28" x="3328" y="1872" name="RegWriteCode(1:0)" orien="R180" />
+        <branch name="RegTwoRead">
+            <wire x2="3360" y1="1936" y2="1936" x1="3328" />
+        </branch>
+        <iomarker fontsize="28" x="3328" y="1936" name="RegTwoRead" orien="R180" />
+        <branch name="ALUOutReg(15:0)">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3328" y="1744" type="branch" />
+            <wire x2="3344" y1="1744" y2="1744" x1="3328" />
+            <wire x2="3360" y1="1744" y2="1744" x1="3344" />
+        </branch>
+        <branch name="Clock">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3328" y="1808" type="branch" />
+            <wire x2="3360" y1="1808" y2="1808" x1="3328" />
+        </branch>
+        <branch name="RegOneRead(1:0)">
+            <wire x2="3360" y1="1424" y2="1424" x1="3328" />
+        </branch>
+        <iomarker fontsize="28" x="3328" y="1424" name="RegOneRead(1:0)" orien="R180" />
     </sheet>
 </drawing>
