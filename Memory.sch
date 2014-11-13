@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <drawing version="7">
-    <attr value="spartan3e" name="DeviceFamilyName">
+    <attr value="artix7" name="DeviceFamilyName">
         <trait delete="all:0" />
         <trait editname="all:0" />
         <trait edittrait="all:0" />
@@ -365,7 +365,7 @@
             <arc ex="192" ey="-160" sx="112" sy="-112" r="88" cx="116" cy="-200" />
         </blockdef>
         <blockdef name="mux16b4">
-            <timestamp>2014-11-11T21:9:58</timestamp>
+            <timestamp>2014-11-13T0:5:19</timestamp>
             <rect width="256" x="64" y="-320" height="320" />
             <rect width="64" x="0" y="-300" height="24" />
             <line x2="0" y1="-288" y2="-288" x1="64" />
