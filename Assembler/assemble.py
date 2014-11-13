@@ -109,7 +109,7 @@ def main(argv):
 	for l in inputf:
 		if (not l.strip().endswith(':')) and (len(l.strip())>0) and (l.strip()[0]!='#'):
 			print("parse line"+str(line)+": "+l)
-			outputf.write(parse(l)+'\n')
+			outputf.write(parse(l)+',\n')
 			line+=1
 	inputf.close()
 	outputf.close()
@@ -149,33 +149,33 @@ def parse(l):
 	return s
 
 def parseBIG_LC(parts):
-	s='1100'+registers[parts[1]]+DectoBin(parts[2],16)[8:]+'\n'
-	s+='1010'+registers[parts[1]]*2+'1000'+'\n'     #sll {Destination Reg}, {Destination Reg}, 8
-	s+='11000101'+DectoBin(parts[2],16)[:8]+'\n'		        #lc at, {constant} # load the lower 8 bits
+	s='1100'+registers[parts[1]]+DectoBin(parts[2],16)[8:]+',\n'
+	s+='1010'+registers[parts[1]]*2+'1000'+',\n'     #sll {Destination Reg}, {Destination Reg}, 8
+	s+='11000101'+DectoBin(parts[2],16)[:8]+',\n'		        #lc at, {constant} # load the lower 8 bits
 	return s+'0001'+registers[parts[1]]*2+'0101'	#or {Destination Reg}. {Destination Reg}, at
 def parseJ(parts):
 	value=parts[1]
 	if parts[1] in labels:
 		value=str(labels[parts[1]])	
-	return parseBIG_LC(['lc','at',value])+'\n'+'1111010100000000'+'\n'
+	return parseBIG_LC(['lc','at',value])+',\n'+'1111010100000000'
 def parseJAL(parts):
-	s='1110010000000110'+'\n'			#lpc ra, 6 # we want to jump 6 ahead to skip the other setup instructions
+	s='1110010000000110'+',\n'			#lpc ra, 6 # we want to jump 6 ahead to skip the other setup instructions
 	value=parts[1]
 	if parts[1] in labels:
 		value=str(labels[parts[1]])
-	s+=parseBIG_LC(['lc','at',value])+'\n'	#lc at, {constant} # this is actually 4 instructions, of course
+	s+=parseBIG_LC(['lc','at',value])+',\n'	#lc at, {constant} # this is actually 4 instructions, of course
 	return s+'1111010100000000'			#spc at,0
 def parseBEQ(parts):
-	s=parseBIG_LC(['lc','at',parts[3]])+'\n'
-	return s+'0110'+registers[parts[1]]+registers[parts[2]]+'0101'+'\n'
+	s=parseBIG_LC(['lc','at',parts[3]])+',\n'
+	return s+'0110'+registers[parts[1]]+registers[parts[2]]+'0101'
 def parseMV(parts):
-	s='1100010100000000'+'\n'
-	return s+'0011'+registers[parts[1]]+'0101'+registers[parts[2]]+'\n'
+	s='1100010100000000'+',\n'
+	return s+'0011'+registers[parts[1]]+'0101'+registers[parts[2]]
 def parsePUSH(parts):
-	return '1101000011111110'+'\n'+'1001'+registers[parts[1]]+'00000000'+'\n'
+	return '1101000011111110'+',\n'+'1001'+registers[parts[1]]+'00000000'
 def parsePOP(parts):
-	s="1000"+registers[parts[1]]+'00000000'+'\n'
-	return s+'1101000000000010'+'\n'
+	s="1000"+registers[parts[1]]+'00000000'+',\n'
+	return s+'1101000000000010'
 def is_number(s):
 	try:
 		int(s)
