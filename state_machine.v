@@ -37,7 +37,6 @@ module state_machine(ReadAddr,
 					RegRead,
 					RegRead2,
 					ALUOutWrite,
-					CSource,
 					RegDest,
 					MemToReg,
 					MDWrite,
@@ -84,7 +83,6 @@ module state_machine(ReadAddr,
 	output [1:0] RegRead;
 	output RegRead2;
 	output ALUOutWrite;
-	output CSource;
 	output [1:0] RegDest;
 	output [1:0] MemToReg;
 	output MDWrite;
@@ -113,7 +111,6 @@ module state_machine(ReadAddr,
 	reg [1:0] RegRead;
 	reg RegRead2;
 	reg ALUOutWrite;
-	reg CSource;
 	reg [1:0] RegDest;
 	reg [1:0] MemToReg;
 	reg MDWrite;
@@ -228,7 +225,6 @@ module state_machine(ReadAddr,
 					ALUA=1;
 					ALUB=1;
 					ALUOutWrite=1;
-					CSource=0;
 					RegRead=0;
 					CWrite=1;
 					PCWrite=0;
@@ -269,6 +265,7 @@ module state_machine(ReadAddr,
 					MemWrite=0;
 					IRWrite=0;
 					RegWrite=0;
+					CWrite=1;
 				end
 			Store_Word:
 				begin
@@ -397,7 +394,6 @@ module state_machine(ReadAddr,
 				end
 			Loading_Calculations:
 				begin
-					CSource=0;
 					CWrite=1;
 					RegRead=0;
 					PCWrite=0;
