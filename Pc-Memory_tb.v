@@ -23,7 +23,7 @@ module TEST_gate();
 		wire [15:0] addr;
 
       // Instantiate the UUT
-		Test UUT (
+		PC_Mem_Unit UUT (
 			.WriteData(WriteData), 
 			.WriteFlag(WriteFlag), 
 			.Input(Input), 
