@@ -1,3 +1,1 @@
-Label:
-addc t0, 12
-jal Label
+pop t0

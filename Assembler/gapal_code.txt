@@ -1,0 +1,205 @@
+# Main code
+
+# Enable all exceptions but input
+
+	lc ex,224
+
+# Load the input handler
+
+	lc t0,handle_input
+	lc t1,16640
+	sw t0,t1,0
+
+# Load in initial values
+
+	lc t0,0
+	sw t0,t0,0
+	lc s0,0
+	
+# Enable input!
+
+	addc ex,16
+	
+# Everything else should be handled by the input handler, so we can just loop
+
+endless_loop:
+	j endless_loop
+
+# Mod function
+
+mod:
+	lst t1,i0,i1
+	lc t2,0
+	beq t1,t2,mod_endloop1
+    	mv t0,i1
+mod_loop2:
+	lst t1,t0,i0
+	lc t2,0
+	beq t1,t2,mod_endloop2
+    	sll t0,t0,1
+    	j mod_loop2
+mod_endloop2:
+    	srl t0,t0,1
+    	sub i0,i0,t0
+    	j mod
+mod_endloop1:
+    	mv rv,i0
+    	ret
+    
+# GCD function
+
+gcd:
+    	push ra
+    	push s0
+    	lc t0,0
+	beq i1,t0,gcd_ret
+    	mv s0,i1
+    	jal mod
+    	mv i0,s0
+    	mv i1,rv
+    	jal gcd
+    	pop s0
+    	pop ra
+    	ret
+gcd_ret:
+    	mv rv,i0
+    	pop s0
+    	pop ra
+    	ret
+
+# Find relative prime function
+
+relprime:
+	push ra
+	push s0
+	push s1
+	lc s0,1
+	mv s1,i0
+relprime_loop:
+	addc s0,1
+	mv i0,s0
+	mv i1,s1
+	jal gcd
+	lst t0,rv,2
+	lc t1,0
+	beq t0,t1,relprime_loop
+
+	mv rv,s0
+	pop s1
+	pop s0
+	pop ra
+	ret
+	
+# Input handler
+
+handle_input:
+
+# First push stuff
+
+	push t0
+	push t1
+	push t2
+	push t3
+	push i0
+	push i1
+	push rv
+	push ra
+	
+# Put switches through to current bits
+
+# First, find bitmask and the switch values
+
+	lc t0,15
+	lc t2,0
+	lc t3,4
+	lw t3,t3,0
+	and t3,t0,t3
+	
+# Now every time we decrement, shift left 4
+
+	mv t1,s0
+	
+shift_loop:
+
+	beq t1,t2,shift_endloop
+	sll t0,t0,4
+	sll t3,t3,4
+	addc t1,-1
+	j shift_loop
+	
+# Now put stuff in the display register
+
+shift_endloop:
+
+	nor t0,t0,t0
+	lc t1,0
+	lw t1,t1,0
+	and t1,t1,t0
+	add t1,t1,t3
+	lc t3,0
+	sw t1,t3,0
+	
+# Did we rotate?
+
+	lc t0,0
+	lc t1,1
+	lc t3,4
+	lw t3,t3,0
+	srl t2,t3,4
+	and t2,t2,t1
+	beq t2,t0,no_rotr
+	
+	addc s0,-1
+	
+no_rotl:
+	
+	srl t2,t3,5
+	and t2,t2,t1
+	beq t2,t0,no_rotr
+	
+	addc s0,1
+
+no_rotr:
+
+# Check to wrap
+
+	lst t1,s0,t0
+	beq t1,t0,notless
+	
+	lc s0,3
+
+notless:
+
+	lc t0,3
+	lst t1,t0,s0
+	lc t0,0
+	beq t1,t0,notgreater
+
+	lc s0,0
+
+notgreater:
+
+	lc t1,1
+
+# Should we run?
+
+	srl t2,t3,6
+	and t2,t2,t1
+	beq t2,t0,no_calc
+	
+	lw i0,t0,0
+	jal relprime
+	lc t0,0
+	sw rv,t0,0
+	
+no_calc:
+
+	pop ra
+	pop rv
+	pop i1
+	pop i0
+	pop t3
+	pop t2
+	pop t1
+	pop t0
+	ret

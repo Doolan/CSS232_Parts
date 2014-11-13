@@ -1,3 +1,1 @@
-Label:
-addc t0, 12
-j Label
+push t0

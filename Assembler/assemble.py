@@ -105,9 +105,12 @@ def main(argv):
 			labels[l.strip()[:(temp-1)].lower()]=mem
 		mem+=1
 	inputf.seek(0,0)	
+	line=1
 	for l in inputf:
-		if not (l.strip().endswith(':')):
+		if (not l.strip().endswith(':')) and (len(l.strip())>0) and (l.strip()[0]!='#'):
+			print("parse line"+str(line)+": "+l)
 			outputf.write(parse(l)+'\n')
+			line+=1
 	inputf.close()
 	outputf.close()
 
@@ -117,8 +120,7 @@ def parse(l):
 	s=""
 	for i in parts:
 		if i in instructions: 
-                	if (i=='lc') and (int(parts[-1])<-128 or int(parts[-1])>127):
-                        	print("goes through here") 	
+                	if (i=='lc') and ((parts[-1] in labels) or int(parts[-1])<-128 or int(parts[-1])>127): 	
 				return parseBIG_LC(parts)
                 	elif i=='j':
                         	return parseJ(parts)
@@ -140,12 +142,9 @@ def parse(l):
 		elif i in registers:
 			s+=""+registers[i]
 		elif is_number(i):
-			if (int(i)<-7) or (int(i)>7):
-				s+=DectoBin(i,8)
-			else:
-				s+=DectoBin(i,4)
+			s+=DectoBin(i,8)
 		else:
-			print("error in syntax")
+			print("error in syntax:"+l)
 			sys.exit()
 	return s
 
@@ -168,14 +167,14 @@ def parseJAL(parts):
 	return s+'1111010100000000'			#spc at,0
 def parseBEQ(parts):
 	s=parseBIG_LC(['lc','at',parts[3]])+'\n'
-	return s+'0110'+registers[parts[1]]+registers[parts[2]]+'0101'
+	return s+'0110'+registers[parts[1]]+registers[parts[2]]+'0101'+'\n'
 def parseMV(parts):
 	s='1100010100000000'+'\n'
 	return s+'0011'+registers[parts[1]]+'0101'+registers[parts[2]]+'\n'
 def parsePUSH(parts):
-	s='1101000011111110'+'\n'+'1001'+registers[parts[1]]+'00000000'
+	return '1101000011111110'+'\n'+'1001'+registers[parts[1]]+'00000000'+'\n'
 def parsePOP(parts):
-	s="1000"+registers[parts[1]]+'0000'+'\n'
+	s="1000"+registers[parts[1]]+'00000000'+'\n'
 	return s+'1101000000000010'+'\n'
 def is_number(s):
 	try:
@@ -184,7 +183,7 @@ def is_number(s):
 	except ValueError:
 		return False
 def DectoBin(s,length):
-	temp=int(s)
+	temp=int(labels[s]) if (s in labels) else int(s)
 	if temp<0:
 		l='{0:0{1}b}'.format(temp,length+1)[1:]
 		return twos_comp(l)
