@@ -61,7 +61,7 @@ module Memory_Memory_sch_tb();
 		InputRst = 0;
 		#202;
 		
-		Addr = 16'h3000;
+		Addr = 16'h1002;
 		#PERIOD;
 		$displayb(ReadData);
 		
