@@ -196,7 +196,33 @@ module state_machine(ReadAddr,
 
 	always@(current_state)
 	begin
-		//reset signals
+	//reset signals
+	ReadAddr=0;
+	IRWrite=0;
+	ALUA=0;
+	ALUB=0;
+	ALUControl=0;
+	PCSource=0;
+	PCWrite=0;
+	RegWrite=0;
+	MemWrite=0;
+	AWrite=0;
+	BWrite=0;
+	CWrite=0;
+	ShifterInput=0;
+	ShifterControl=0;
+	ShifterLeft=0;
+	PCWriteCond=0;
+	RegRead=0;
+	RegRead2=0;
+	ALUOutWrite=0;
+	RegDest=0;
+	MemToReg=0;
+	MDWrite=0;
+	//KernelMode=0;
+	ExType=0;
+	InputRst=0;
+	cur_op=0;
 		case(current_state)
 			Fetch:
 					begin
@@ -810,9 +836,3 @@ module state_machine(ReadAddr,
 		end
 		 
 endmodule
-
-
-
-
-
-
