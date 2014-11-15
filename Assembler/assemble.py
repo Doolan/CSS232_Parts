@@ -104,7 +104,7 @@ def main(argv):
 			temp=len(l.strip())
 			labels[l.strip()[:(temp-1)].lower()]=mem
 		mem+=1
-	inputf.seek(0,0)	
+	inputf.seek(0,0)
 	line=1
 	for l in inputf:
 		if (not l.strip().endswith(':')) and (len(l.strip())>0) and (l.strip()[0]!='#'):
@@ -119,9 +119,9 @@ def parse(l):
 	parts=parse_line(l)
 	s=""
 	for i in parts:
-		if i in instructions: 
-                	if (i=='lc') and ((parts[-1] in labels) or int(parts[-1])<-128 or int(parts[-1])>127): 	
-				return parseBIG_LC(parts)
+		if i in instructions:
+                	if (i=='lc') and ((parts[-1] in labels) or int(parts[-1])<-128 or int(parts[-1])>127):
+							return parseBIG_LC(parts)
                 	elif i=='j':
                         	return parseJ(parts)
                 	elif i=='jal':
@@ -133,7 +133,7 @@ def parse(l):
 			elif i=='push':
 				return parsePUSH(parts)
 			elif i=='pop':
-				return parsePOP(parts) 
+				return parsePOP(parts)
 			elif i=='ret':
 				# spc ra,0
 				return '1111010000000000'
@@ -149,14 +149,18 @@ def parse(l):
 	return s
 
 def parseBIG_LC(parts):
-	s='1100'+registers[parts[1]]+DectoBin(parts[2],16)[8:]+',\n'
+	upper=DectoBin(parts[2],16)[:8]
+	lower=DectoBin(parts[2],16)[8:]
+	if(int(lower,2)>127):
+		upper=DectoBin(int(upper,2)+1,8)
+	s='1100'+registers[parts[1]]+lower+',\n'
 	s+='1010'+registers[parts[1]]*2+'1000'+',\n'     #sll {Destination Reg}, {Destination Reg}, 8
-	s+='11000101'+DectoBin(parts[2],16)[:8]+',\n'		        #lc at, {constant} # load the lower 8 bits
-	return s+'0001'+registers[parts[1]]*2+'0101'	#or {Destination Reg}. {Destination Reg}, at
+	s+='11000101'+upper+',\n'		        #lc at, {constant} # load the lower 8 bits
+	return s+'0011'+registers[parts[1]]*2+'0101'	#or {Destination Reg}. {Destination Reg}, at
 def parseJ(parts):
 	value=parts[1]
 	if parts[1] in labels:
-		value=str(labels[parts[1]])	
+		value=str(labels[parts[1]])
 	return parseBIG_LC(['lc','at',value])+',\n'+'1111010100000000'
 def parseJAL(parts):
 	s='1110010000000110'+',\n'			#lpc ra, 6 # we want to jump 6 ahead to skip the other setup instructions

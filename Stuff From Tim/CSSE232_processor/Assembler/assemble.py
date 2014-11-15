@@ -102,6 +102,8 @@ def parse(l):
 	parse_line= lambda line: line.strip().lower().replace(',',' ').split()
 	parts=parse_line(l)
 	s=""
+	print(parts)
+	print(int(parts[-1]))
 	for i in parts:
 		if i in instructions:
                 	if i is "lc" and (int(parts[-1])<-128 or int(parts[-1])>127):
@@ -130,6 +132,8 @@ def parse(l):
 	return s
 
 def parseBIG_LC(parts):
+	value=parts[2][:8]
+	print(int(value,8))
 	s='1100'+parts[1]+parts[2][:8]+'\n'
 	s+='1010'+registers[parts[1]]*2+'0111'+'\n'     #sll {Destination Reg}, {Destination Reg}, 7
 	s+='1010'+registers[parts[1]]*2+'0001'+'\n'     #sll {destination Reg}, {Destination Reg}, 1
