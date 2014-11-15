@@ -1,6 +1,6 @@
 `timescale 1ns / 100ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: Graple
+// Company: GAPAL
 // Engineer:
 //
 // Create Date:    09:03:14 11/03/2014
@@ -50,7 +50,7 @@ module state_machine(ReadAddr,
 					AccInv,
 					InputRecv,
 					Misalign,
-					Inp//utRst,
+					InputRst,
 					cur_op);
 
 	//inputs
@@ -88,7 +88,7 @@ module state_machine(ReadAddr,
 	output MDWrite;
 	output KernelMode;
 	output [1:0] ExType;
-	output InputRst//;
+	output InputRst;
 	output [3:0] cur_op;
 
 	//register storage
@@ -116,7 +116,7 @@ module state_machine(ReadAddr,
 	reg MDWrite;
 	reg KernelMode;
 	reg [1:0] ExType;
-	reg InputRst//;
+	reg InputRst;
 	reg [3:0] cur_op;
 
 	//states
@@ -513,7 +513,7 @@ module state_machine(ReadAddr,
 					RegWrite=0;
 					BWrite=1;
 					RegRead2=1;
-					InputR//st=1;
+					InputRst=1;
 					ALUOutWrite=0;
 				end
 			ExH_PC:
@@ -530,7 +530,7 @@ module state_machine(ReadAddr,
 					ALUA=7;
 					ALUB=0;
 					ALUControl=2;
-		//			InputRst=0;
+					InputRst=0;
 				end
 			ExH_ALU:
 				begin
