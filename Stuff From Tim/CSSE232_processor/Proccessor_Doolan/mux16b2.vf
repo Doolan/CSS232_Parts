@@ -1,0 +1,136 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 13.4
+//  \   \         Application : sch2hdl
+//  /   /         Filename : mux16b2.vf
+// /___/   /\     Timestamp : 11/09/2014 20:57:12
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/mux16b2.vf -w /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Components/mux16b2.sch
+//Design Name: mux16b2
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale  100 ps / 10 ps
+
+module M2_1_HXILINX_mux16b2 (O, D0, D1, S0);
+    
+
+   output O;
+
+   input  D0;
+   input  D1;
+   input  S0;
+
+   reg O;
+
+   always @ ( D0 or D1 or S0)
+   begin
+      case(S0)
+      1'b0 : O <= D0;
+      1'b1 : O <= D1;
+      endcase
+   end
+    
+endmodule
+`timescale 1ns / 1ps
+
+module mux16b2(A, 
+               B, 
+               S, 
+               O);
+
+    input [15:0] A;
+    input [15:0] B;
+    input S;
+   output [15:0] O;
+   
+   
+   (* HU_SET = "XLXI_112_0" *) 
+   M2_1_HXILINX_mux16b2  XLXI_112 (.D0(A[0]), 
+                                  .D1(B[0]), 
+                                  .S0(S), 
+                                  .O(O[0]));
+   (* HU_SET = "XLXI_113_1" *) 
+   M2_1_HXILINX_mux16b2  XLXI_113 (.D0(A[1]), 
+                                  .D1(B[1]), 
+                                  .S0(S), 
+                                  .O(O[1]));
+   (* HU_SET = "XLXI_115_2" *) 
+   M2_1_HXILINX_mux16b2  XLXI_115 (.D0(A[2]), 
+                                  .D1(B[2]), 
+                                  .S0(S), 
+                                  .O(O[2]));
+   (* HU_SET = "XLXI_116_3" *) 
+   M2_1_HXILINX_mux16b2  XLXI_116 (.D0(A[4]), 
+                                  .D1(B[4]), 
+                                  .S0(S), 
+                                  .O(O[4]));
+   (* HU_SET = "XLXI_120_4" *) 
+   M2_1_HXILINX_mux16b2  XLXI_120 (.D0(A[5]), 
+                                  .D1(B[5]), 
+                                  .S0(S), 
+                                  .O(O[5]));
+   (* HU_SET = "XLXI_121_5" *) 
+   M2_1_HXILINX_mux16b2  XLXI_121 (.D0(A[6]), 
+                                  .D1(B[6]), 
+                                  .S0(S), 
+                                  .O(O[6]));
+   (* HU_SET = "XLXI_122_6" *) 
+   M2_1_HXILINX_mux16b2  XLXI_122 (.D0(A[7]), 
+                                  .D1(B[7]), 
+                                  .S0(S), 
+                                  .O(O[7]));
+   (* HU_SET = "XLXI_123_7" *) 
+   M2_1_HXILINX_mux16b2  XLXI_123 (.D0(A[3]), 
+                                  .D1(B[3]), 
+                                  .S0(S), 
+                                  .O(O[3]));
+   (* HU_SET = "XLXI_124_8" *) 
+   M2_1_HXILINX_mux16b2  XLXI_124 (.D0(A[8]), 
+                                  .D1(B[8]), 
+                                  .S0(S), 
+                                  .O(O[8]));
+   (* HU_SET = "XLXI_125_9" *) 
+   M2_1_HXILINX_mux16b2  XLXI_125 (.D0(A[9]), 
+                                  .D1(B[9]), 
+                                  .S0(S), 
+                                  .O(O[9]));
+   (* HU_SET = "XLXI_126_10" *) 
+   M2_1_HXILINX_mux16b2  XLXI_126 (.D0(A[10]), 
+                                  .D1(B[10]), 
+                                  .S0(S), 
+                                  .O(O[10]));
+   (* HU_SET = "XLXI_127_11" *) 
+   M2_1_HXILINX_mux16b2  XLXI_127 (.D0(A[11]), 
+                                  .D1(B[11]), 
+                                  .S0(S), 
+                                  .O(O[11]));
+   (* HU_SET = "XLXI_128_12" *) 
+   M2_1_HXILINX_mux16b2  XLXI_128 (.D0(A[12]), 
+                                  .D1(B[12]), 
+                                  .S0(S), 
+                                  .O(O[12]));
+   (* HU_SET = "XLXI_129_13" *) 
+   M2_1_HXILINX_mux16b2  XLXI_129 (.D0(A[13]), 
+                                  .D1(B[13]), 
+                                  .S0(S), 
+                                  .O(O[13]));
+   (* HU_SET = "XLXI_130_14" *) 
+   M2_1_HXILINX_mux16b2  XLXI_130 (.D0(A[14]), 
+                                  .D1(B[14]), 
+                                  .S0(S), 
+                                  .O(O[14]));
+   (* HU_SET = "XLXI_131_15" *) 
+   M2_1_HXILINX_mux16b2  XLXI_131 (.D0(A[15]), 
+                                  .D1(B[15]), 
+                                  .S0(S), 
+                                  .O(O[15]));
+endmodule

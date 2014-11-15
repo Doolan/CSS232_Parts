@@ -1,0 +1,100 @@
+`timescale 1ns / 100ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    09:03:14 11/03/2014 
+// Design Name: 
+// Module Name:    state_machine 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module state_machine(ReadAddr,
+		IRWrite,
+		ALUA,
+		ALUB,
+		ALUControl,
+		MemAddr,
+		PCSource,
+		PCWrite
+		RegWrite,
+		MemWrite);
+
+
+
+
+   //register calculation
+   always @ (posedge CLK, posedge Reset)
+     begin
+        if (Reset)
+          current_state = Fetch;
+        else 
+          current_state = next_state;
+     end
+
+
+   always @ (posedge CLK)
+  	    begin	
+	       $display("The opcode is %d", Opcode);
+       case (Opcode)
+		 0:
+		   begin
+		      $display("R-type");
+				ALUSrc = 0;
+				MemtoReg = 0;
+				RegDst = 1;
+				RegWrite = 1;
+				MemRead = 0;
+				MemWrite = 0;
+				Branch = 0;
+ 		   end
+		 4:
+		   begin
+			$display("Branch");
+				ALUSrc = 0;
+				MemtoReg = 0;
+				RegDst = 0;
+				RegWrite = 0;
+				MemRead = 0;
+				MemWrite = 0;
+				Branch = 1;
+		   end
+		 35:
+		   begin
+			$display("Load");
+				ALUSrc = 1;
+				MemtoReg = 1;
+				RegDst = 0;
+				RegWrite = 1;
+				MemRead = 1;
+				MemWrite = 0;
+				Branch = 0;
+		   end
+		 43:
+		   begin 
+			$display("Store");
+				ALUSrc = 1;
+				MemtoReg = 0;
+				RegDst = 0;
+				RegWrite = 0;
+				MemRead = 0;
+				MemWrite = 1;
+				Branch = 0;
+		   end
+		 default:
+		   begin 
+		      $display(" Wrong Opcode %d ", Opcode);  
+         end
+	       endcase	
+	       
+	    end
+  

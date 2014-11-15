@@ -1,0 +1,16 @@
+select figure at 762 174 8 -branches -sn=1
+select all in 762 174 1480 1111 -branches -enclosed -sn=1
+select figure at 1067 271 8 -branches -sn=1
+select figure at 813 153 8 -branches -sn=1
+select all in 813 153 1356 1151 -branches -enclosed -sn=1
+delete selection -sn=1
+select figure at 1102 327 8 -branches -sn=1
+delete selection -sn=1
+undo
+undo
+undo
+undo
+undo
+undo
+undo
+undo

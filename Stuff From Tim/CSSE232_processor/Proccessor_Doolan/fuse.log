@@ -1,0 +1,24 @@
+Running: /opt/Xilinx/13.4/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/mux4b4_tb_0_isim_beh.exe -prj /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/mux4b4_tb_0_beh.prj work.mux4b4_tb_0 work.glbl 
+ISim O.87xd (signature 0x8ddf5b5d)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file "/home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/mux4b4.vf" into library work
+Analyzing Verilog file "/home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/../Components/mux4b4_tb.v" into library work
+Analyzing Verilog file "/opt/Xilinx/13.4/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 95244 KB
+Fuse CPU Usage: 1290 ms
+Compiling module VCC
+Compiling module M4_1E_HXILINX_mux4b4
+Compiling module mux4b4
+Compiling module mux4b4_tb_0
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 5 Verilog Units
+Built simulation executable /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/mux4b4_tb_0_isim_beh.exe
+Fuse Memory Usage: 1179716 KB
+Fuse CPU Usage: 1310 ms
+GCC CPU Usage: 360 ms

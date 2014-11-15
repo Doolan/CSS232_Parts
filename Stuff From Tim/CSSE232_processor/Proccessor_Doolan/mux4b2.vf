@@ -1,0 +1,76 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 13.4
+//  \   \         Application : sch2hdl
+//  /   /         Filename : mux4b2.vf
+// /___/   /\     Timestamp : 11/09/2014 21:02:37
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family artix7 -verilog /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Proccessor_Doolan/mux4b2.vf -w /home/doolansr/Documents/CSSE232_GIT/CSSE232_processor/Components/mux4b2.sch
+//Design Name: mux4b2
+//Device: artix7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale  100 ps / 10 ps
+
+module M2_1_HXILINX_mux4b2 (O, D0, D1, S0);
+    
+
+   output O;
+
+   input  D0;
+   input  D1;
+   input  S0;
+
+   reg O;
+
+   always @ ( D0 or D1 or S0)
+   begin
+      case(S0)
+      1'b0 : O <= D0;
+      1'b1 : O <= D1;
+      endcase
+   end
+    
+endmodule
+`timescale 1ns / 1ps
+
+module mux4b2(A, 
+              B, 
+              S, 
+              O);
+
+    input [3:0] A;
+    input [3:0] B;
+    input S;
+   output [3:0] O;
+   
+   
+   (* HU_SET = "XLXI_112_0" *) 
+   M2_1_HXILINX_mux4b2  XLXI_112 (.D0(A[0]), 
+                                 .D1(B[0]), 
+                                 .S0(S), 
+                                 .O(O[0]));
+   (* HU_SET = "XLXI_113_1" *) 
+   M2_1_HXILINX_mux4b2  XLXI_113 (.D0(A[1]), 
+                                 .D1(B[1]), 
+                                 .S0(S), 
+                                 .O(O[1]));
+   (* HU_SET = "XLXI_115_2" *) 
+   M2_1_HXILINX_mux4b2  XLXI_115 (.D0(A[2]), 
+                                 .D1(B[2]), 
+                                 .S0(S), 
+                                 .O(O[2]));
+   (* HU_SET = "XLXI_123_3" *) 
+   M2_1_HXILINX_mux4b2  XLXI_123 (.D0(A[3]), 
+                                 .D1(B[3]), 
+                                 .S0(S), 
+                                 .O(O[3]));
+endmodule

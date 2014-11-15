@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<report-views version="2.0" >
+ <header>
+<<<<<<< Updated upstream
+  <DateModified>2014-11-05T22:43:26</DateModified>
+  <DateModified>2014-11-09T18:52:35</DateModified>
+  <ModuleName>Processor</ModuleName>
+  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SavedFilePath>/home/xniccum/projects/csse232/1415a-csse232-niccumas/CSSE232_processor/Components/iseconfig/Processor.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/xniccum/projects/csse232/1415a-csse232-niccumas/CSSE232_processor/Components/work/</ImplementationReportsDirectory>
+=======
+  <DateModified>2014-11-09T18:44:29</DateModified>
+=======
+  <ImplementationReportsDirectory>/home/schulzcc/proj232git/CSSE232_processor/Components/work/</ImplementationReportsDirectory>
+>>>>>>> Stashed changes
+  <ModuleName>Processor</ModuleName>
+  <DateModified>2014-11-09T19:22:43</DateModified>
+  <SavedFilePath>/home/schulzcc/proj232git/CSSE232_processor/Components/iseconfig/Processor.xreport</SavedFilePath>
+  <DateInitialized>2014-11-09T19:22:14</DateInitialized>
+  <EnableMessageFiltering>false</EnableMessageFiltering>
+ </header>
+</report-views>
